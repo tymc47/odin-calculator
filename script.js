@@ -21,6 +21,21 @@ clearBtn.addEventListener('click', clear);
 operationBtns.forEach(btn => btn.addEventListener('click', operation));
 equalBtn.addEventListener('click', equal);
 
+//keyboard support
+window.addEventListener('keydown', handleKeyboard)
+function handleKeyboard(e){
+    let selector = ""
+    if (e.key == ".") selector = ".keyDot"
+    else if (e.key == "+") selector = ".keyPlus"
+    else if (e.key == "*") selector = ".keyMinus"
+    else if (e.key == "/") selector = ".keyDivide"
+    else if (e.key == "=" || e.key == "Enter") selector =".keyEqual"
+    else selector = ".key" + e.key;
+    
+    const button = calculator.querySelector(selector);
+    if (button != null) button.click();
+}
+
 function setNum(){
     if (currentNum == "new") currentNum = "";
 
