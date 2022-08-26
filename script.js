@@ -27,19 +27,23 @@ function handleKeyboard(e){
     let selector = ""
     if (e.key == ".") selector = ".keyDot"
     else if (e.key == "+") selector = ".keyPlus"
-    else if (e.key == "*") selector = ".keyMinus"
+    else if (e.key == "*") selector = ".keyTime"
+    else if (e.key == "-") selector = ".keyMinus"
     else if (e.key == "/") selector = ".keyDivide"
     else if (e.key == "=" || e.key == "Enter") selector =".keyEqual"
     else selector = ".key" + e.key;
-    
+    console.log(selector);
     const button = calculator.querySelector(selector);
     if (button != null) button.click();
 }
 
 function setNum(){
-    if (currentNum == "new") currentNum = "";
+    if (currentNum == "new") {
+        this.textContent == "." ? currentNum = "0" : currentNum = "";
+    }
 
     currentNum += this.textContent;  
+    console.log("in set Num: " + currentNum)
     popDisplay();
 }
 
